@@ -1,0 +1,32 @@
+<div class="slider-area p-relative" [ngStyle]="{ 'background-image': 'url(' + backgroundImage + ')' }">
+  <div class="slider-bg-text p-absolute">
+    <h2 class="vert-move">Listen</h2>
+  </div>
+
+  <div class="container-fluid p-0">
+    <div class="slider-active">
+      @for (slide of sliders; track slide.image) {
+        <div class="single-slider slider-height d-flex align-items-center">
+          <div class="row align-items-center gx-0 mt-40">
+            <div class="col-xl-5 col-lg-5 col-md-5 col-sm-12">
+              <div class="slider-content">
+                <span [attr.data-animation]="'fadeInUp'" [attr.data-delay]="'.2s'">{{ slide.subtitle }}</span>
+                <h2 [innerHTML]="slide.title" [attr.data-animation]="'fadeInUp'" [attr.data-delay]="'.4s'"></h2>
+                <div class="slider-btn" [attr.data-animation]="'fadeInUp'" [attr.data-delay]="'.6s'">
+                  <a [routerLink]="slide.buttonRoute" class="s-btn s-btn__white">{{ slide.buttonLabel }}</a>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="col-xl-7 col-lg-7 col-md-7 d-none d-md-inline-block">
+              <div class="slider-thumb text-end" [attr.data-animation]="'fadeInRight'" [attr.data-delay]="'.8s'">
+                <img [src]="slide.image" alt="Slider Image"/>
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</div>

@@ -1,0 +1,45 @@
+<section class="pricing__area pt-130 pb-170">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+        <div class="section__title mb-70 text-center">
+          <h1>Safe, Supportive Conversations That Help You Feel Lighter</h1>
+          <span class="section__sub-title">Affordable sessions for everyday emotional wellbeing</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      @for (plan of pricingPlans; track plan.title) {
+        <div class="col-xl-4 col-lg-4 col-md-6">
+          <div class="pricing__item mb-60">
+            <div class="pricing__thumb w-img p-relative mb-15 fix">
+              <img [src]="plan.image" [alt]="plan.title + ' pricing'">
+              @if (plan.popular) {
+                <div class="pricing__popular p-absolute">
+                  <span>popular</span>
+                </div>
+              }
+            </div>
+
+            <div class="pricing__content text-center pink-soft-bg p-relative">
+              <div class="pricing__price p-absolute d-flex align-items-center justify-content-center">
+                <div class="pricing__price-inner">
+                  <h1>{{ plan.price }}<span>/</span></h1>
+                  <span>{{ plan.frequency }}</span>
+                </div>
+              </div>
+
+              <h2>{{ plan.title }}</h2>
+              <p>{{ plan.description }}</p>
+
+              <div class="pricing__btn p-absolute">
+                <a [href]="plan.buttonUrl" class="s-btn">{{ plan.buttonLabel }}</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

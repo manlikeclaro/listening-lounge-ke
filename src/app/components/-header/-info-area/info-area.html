@@ -1,0 +1,64 @@
+<section class="info__area transition-3" [class.info-opened]="isInfoVisible">
+
+  <div class="info__area-inner">
+    <div class="info__area-wrapper">
+      <div class="info__close-icon text-end">
+        <button class="info-close-btn" (click)="closeInfoArea()"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="info__wrapper" [attr.data-background]="backgroundImage">
+        <div class="info__logo mt-25 mb-30">
+          <a [routerLink]="this.menuList[0].route"><img [src]="logoSrc" alt="logo"></a>
+        </div>
+
+        <div class="info__content">
+          <h4>{{ aboutInfo.title }}</h4>
+          <p>{{ aboutInfo.description }}</p>
+          <a [routerLink]="aboutInfo.link" class="s-btn s-btn__white">{{ aboutInfo.linkText }}</a>
+        </div>
+
+        <div class="info__contact">
+          <h3>Contact Info</h3>
+          <ul>
+            @for (item of infoContact; track item.icon) {
+              <li>
+                <div class="icon">
+                  <i [class]="item.icon"></i>
+                </div>
+                <div class="text">
+                  <span>{{ item.text }}</span>
+                </div>
+              </li>
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <nav class="side-mobile-menu">
+      <div class="info__close-icon text-end mb-20">
+        <button class="info-close-btn" (click)="closeInfoArea()">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+
+      <ul id="mobile-menu-active" class="metismenu">
+        @for (item of menuList; track item.label) {
+          <li class="has-dropdown">
+            <a href="#">{{ item.label }}</a>
+
+            @if ((item.submenu).length > 0) {
+              <ul class="submenu mm-collapse">
+                @for (sub of item.submenu; track sub.label) {
+                  <li><a href="#">{{ sub.label }}</a></li>
+                }
+              </ul>
+            }
+          </li>
+        }
+      </ul>
+    </nav>
+
+  </div>
+</section>
+
+<div class="body-overlay transition-3" (click)="closeInfoArea()" [class.opened]="isInfoVisible"></div>

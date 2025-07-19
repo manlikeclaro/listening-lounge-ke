@@ -1,0 +1,80 @@
+.faq__bg {
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.faq__inner .card {
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #e4dfd9 !important;
+}
+
+.faq__inner .card-header {
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  padding: 30px 0;
+  background-color: transparent;
+  border: 0;
+}
+
+.faq__inner .card-header h5 button {
+  font-size: 27px;
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 700;
+  color: #005046;
+  background: transparent;
+  text-decoration: none;
+  line-height: 1;
+  width: 100%;
+  padding: 0 30px 0 0;
+  position: relative;
+  text-align: left;
+  display: inline-block;
+}
+
+.faq__inner .card-header h5 button::before {
+  position: absolute;
+  content: "\f068";
+  font-family: "Font Awesome 5 Free";
+  top: 50%;
+  right: 0;
+  width: 25px;
+  height: 25px;
+  line-height: 25px;
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+  color: #ffffff;
+  background-color: #056c5f;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.faq__inner .card-header h5 button.collapsed::before {
+  content: "\f067";
+  background-color: #ffffff;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  color: #056c5f;
+}
+
+.faq__inner .card-header h5 button:hover {
+  text-decoration: none;
+  color: #f8a683;
+}
+
+.faq__inner .card-body {
+  padding: 0 0 25px;
+}

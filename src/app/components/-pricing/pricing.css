@@ -1,0 +1,108 @@
+.pricing__item:hover .pricing__thumb img {
+  -webkit-transform: scale(1.1);
+  -moz-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+.pricing__price {
+  top: -15px;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: 145px;
+  height: 145px;
+  text-align: center;
+  background-color: #ffffff;
+  border: 8px solid #f8a683;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  -webkit-box-shadow: 0px 10px 30px 0px rgba(0, 37, 32, 0.06);
+  -moz-box-shadow: 0px 10px 30px 0px rgba(0, 37, 32, 0.06);
+  box-shadow: 0px 10px 30px 0px rgba(0, 37, 32, 0.06);
+  z-index: 1;
+}
+
+.pricing__price h1 {
+  font-family: "Rubik", sans-serif;
+  font-size: 35px;
+  font-weight: 500;
+  margin-bottom: 0;
+}
+
+.pricing__price span {
+  font-size: 13px;
+  text-transform: uppercase;
+}
+
+.pricing__price-inner {
+  margin-top: 5px;
+}
+
+.pricing__popular {
+  top: 18px;
+  right: -53px;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+  background-color: #056c5f;
+  width: 200px;
+  height: 45px;
+  line-height: 45px;
+  text-align: center;
+}
+
+.pricing__popular span {
+  font-size: 13px;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+.pricing__content {
+  padding: 80px 30px 60px 30px;
+}
+
+.pricing__content h2 {
+  margin-bottom: 25px;
+  text-transform: capitalize;
+}
+
+.pricing__content p {
+  position: relative;
+  padding-bottom: 16px;
+  margin-bottom: 12px;
+}
+
+.pricing__content p::before {
+  position: absolute;
+  content: "";
+  left: 50%;
+  bottom: 0;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  width: 160px;
+  height: 1px;
+  background-color: #d7d3cf;
+  background-image: linear-gradient(left, #fbf7f3 2%, #d7d3cf 50%, #fbf7f3 98%);
+  background-image: -o-linear-gradient(left, #fbf7f3 2%, #d7d3cf 50%, #fbf7f3 98%);
+  background-image: -moz-linear-gradient(left, #fbf7f3 2%, #d7d3cf 50%, #fbf7f3 98%);
+  background-image: -webkit-linear-gradient(left, #fbf7f3 2%, #d7d3cf 50%, #fbf7f3 98%);
+  background-image: -ms-linear-gradient(left, #fbf7f3 2%, #d7d3cf 50%, #fbf7f3 98%);
+  background-image: -webkit-gradient(linear, left bottom, right bottom, color-stop(0.02, #fbf7f3), color-stop(0.5, #d7d3cf), color-stop(0.98, #fbf7f3));
+}
+
+.pricing__btn {
+  top: 100%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: 100%;
+}

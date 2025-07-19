@@ -1,0 +1,145 @@
+.contact__area-3 {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.contact__form {
+  margin-right: 55px;
+}
+
+.contact__input {
+  width: 100%;
+  border: 1px solid transparent;
+  height: 70px;
+  line-height: 70px;
+  padding: 0 20px;
+  font-size: 15px;
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.2);
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  margin-bottom: 24px;
+}
+
+.contact__input::placeholder {
+  color: #ffffff;
+  font-size: 15px;
+  text-transform: capitalize;
+}
+
+.contact__input:focus {
+  border-color: #ffffff;
+}
+
+.contact__input.nice-select span {
+  font-size: 15px;
+}
+
+.contact__input.nice-select ul {
+  width: 100%;
+}
+
+.contact__input.nice-select ul li {
+  display: block;
+  color: #005046;
+}
+
+.contact__input.nice-select::after {
+  border-color: #ffffff;
+  right: 20px;
+}
+
+.contact__input.txt-area {
+  height: 150px;
+  padding: 20px;
+  resize: none;
+  line-height: 1;
+  margin-bottom: 25px;
+}
+
+.contact__input-3 {
+  background-color: #ffffff;
+  color: #999999;
+}
+
+.contact__input-3::placeholder {
+  color: #999999;
+}
+
+.contact__input-3.nice-select::after {
+  border-color: #056c5f;
+}
+
+.contact__input-4 {
+  background-color: #f6f6f6;
+}
+
+.contact__input-4:focus {
+  border-color: #056c5f;
+}
+
+.contact__map-wrapper {
+  margin-top: -50px;
+  width: 100%;
+  height: 885px;
+  right: 0;
+  overflow: hidden;
+}
+
+.contact__map-wrapper iframe {
+  width: 100%;
+  height: 100%;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border: none;
+}
+
+.contact__icon span {
+  display: inline-block;
+  width: 70px;
+  height: 70px;
+  line-height: 70px;
+  text-align: center;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  background-color: #f8a683;
+}
+
+.contact__icon span::before {
+  font-size: 40px;
+  color: #ffffff;
+}
+
+.contact__info {
+  z-index: 1;
+}
+
+.contact__info-inner {
+  padding: 85px 70px 50px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+}
+
+.contact__info-content h3 {
+  color: #ffffff;
+  margin-bottom: 13px;
+}
+
+.contact__info-content span {
+  color: #ffffff;
+  display: block;
+}
+
+.contact__map {
+  width: 100%;
+  height: 750px;
+}
+
+.contact__map iframe {
+  width: 100%;
+  height: 100%;
+}

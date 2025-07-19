@@ -1,0 +1,52 @@
+<header>
+  <div id="header-sticky" class="header-area tranparent-header box-105">
+    <div class="container-fluid">
+      <div class="row align-items-center">
+        <div class="col-xl-2 col-lg-2 col-md-3 col-sm-6 col-6">
+          <div class="logo">
+            <a [routerLink]="routes.home"><img [src]="logoSrc" alt="logo"/></a>
+          </div>
+        </div>
+
+        <div class="col-xl-7 col-lg-9 d-none d-lg-block">
+          <div class="main-menu">
+            <nav>
+              <ul>
+                @for (item of menuItems; track item.label) {
+                  <li class="has-dropdown">
+                    <a [routerLink]="item.route">{{ item.label }}</a>
+                    @if (item.submenu.length > 0) {
+                      <ul class="submenu">
+                        @for (sub of item.submenu; track sub.label) {
+                          <li><a [routerLink]="sub.route">{{ sub.label }}</a></li>
+                        }
+                      </ul>
+                    }
+                  </li>
+                }
+              </ul>
+            </nav>
+          </div>
+        </div>
+
+        <div class="col-xl-3 col-lg-1 col-md-9 col-sm-6 col-6">
+          <div class="header-bar info-toggle-btn f-right" (click)="toggleInfoPanel()">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          @if (contactPhone) {
+            <div
+              class="header-cta f-right d-none d-sm-inline-block d-md-inline-block d-lg-none d-xl-inline-block">
+              <span class="icon flaticon-24-hours-support">
+                <a [href]="'tel:' + contactPhone">{{ contactPhone }}</a>
+              </span>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<app-info-area></app-info-area>

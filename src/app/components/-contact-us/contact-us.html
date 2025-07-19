@@ -1,0 +1,57 @@
+<section class="contact__area pb-355 box-pl-105 pt-120 mt-20"
+         [style.background-image]="'url(' + backgroundImage + ')'"
+         [attr.data-background]="backgroundImage">
+  <div class="container-fluid">
+    <div class="row">
+      <!-- Left: Contact Form -->
+      <div class="col-xl-6 col-lg-6">
+        <div class="contact__wrapper">
+          <div class="section__title section__title-white mb-65 pr-100">
+            <h1>Unburden Your Mind , Let's Talk</h1>
+            <p class="white-color mt-10">
+              Reach out for a confidential, judgment-free conversation. Whether you're overwhelmed, anxious, or just need someone to listen — we're here.
+            </p>
+          </div>
+
+          <form #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm)" class="contact__form">
+            <div class="row">
+              <div class="col-xl-12">
+                <input name="name" [(ngModel)]="contact.name" class="contact__input" type="text" placeholder="Your Name" required/>
+              </div>
+              <div class="col-xl-12">
+                <input name="email" [(ngModel)]="contact.email" class="contact__input" type="email" placeholder="Email Address" required/>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-xl-12">
+                <input name="phone" [(ngModel)]="contact.phone" class="contact__input" type="text" placeholder="Phone (optional)"/>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-xl-12">
+                <textarea name="message" [(ngModel)]="contact.message" class="contact__input txt-area" rows="6" placeholder="Write something you'd like to share..." required></textarea>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-xl-12">
+                <button class="s-btn s-btn__pink" type="submit">Start Conversation</button>
+              </div>
+            </div>
+          </form>
+
+          <p class="ajax-response">{{ responseMessage }}</p>
+        </div>
+      </div>
+
+      <!-- Right: Embedded Map -->
+      <div class="col-xl-6 col-lg-6 pr-0">
+        <div class="contact__map-wrapper">
+          <iframe [src]="this.safeMapUrl"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

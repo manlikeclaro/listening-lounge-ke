@@ -1,0 +1,45 @@
+<section class="blog__area box-105 pt-10 pb-100">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 col-md-12">
+        <div class="section__title mb-70 text-center pl-50 pr-50">
+          <h1>{{ section.title }}</h1>
+          <span class="section__sub-title">{{ section.subtitle }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid">
+    <div class="row">
+      @for (blog of displayedBlogs; track blog.title) {
+        <div class="col-xl-4 col-lg-6 col-md-6">
+          <div class="blog__item mb-30">
+            <div class="blog__thumb w-img fix">
+              <img [src]="blog.image" [alt]="blog.title">
+            </div>
+            <div class="blog__content pink-soft-bg p-relative mr-65">
+              <div class="blog__meta fix">
+                <span class="f-left">
+                  <a [routerLink]="['/author', blog.authorSlug]"><i class="far fa-user"></i>{{ blog.author }}</a>
+                </span>
+                <div class="blog__date p-absolute">
+                  <h6>{{ blog.date | date:'dd' }}</h6>
+                  <span>{{ blog.date | date:'MMM' }}</span>
+                </div>
+              </div>
+              <h2>
+                <a [routerLink]="['/blog', blog.id]">{{ blog.title }}</a>
+              </h2>
+              <div class="blog__meta">
+                @for (tag of blog.tags; track tag) {
+                  <span><a><i class="fas fa-tags"></i>{{ tag }}</a></span>
+                }
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

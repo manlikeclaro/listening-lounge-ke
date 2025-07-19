@@ -1,12 +1,25 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component } from '@angular/core';
+import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
+import { Footer } from './components/-footer/footer';
+import { Header } from './components/-header/header';
 
 @Component({
+  imports: [
+    RouterOutlet,
+    Header,
+    Footer
+  ],
   selector: 'app-root',
-  imports: [RouterOutlet],
-  templateUrl: './app.html',
-  styleUrl: './app.css'
+  standalone: true,
+  styleUrl: './app.css',
+  templateUrl: './app.html'
 })
 export class App {
-  protected readonly title = signal('the-listening-lounge');
+  constructor(private router: Router) {
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        window.scrollTo({ top: 0 });
+      }
+    });
+  }
 }

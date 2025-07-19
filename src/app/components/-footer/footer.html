@@ -1,0 +1,139 @@
+<footer>
+  <div class="footer__area pt-130 footer-bg box-105">
+    <div class="container-fluid">
+      <div class="footer__bottom pt-130 pb-50">
+        <div class="row">
+          <!-- Logo and Slogan -->
+          <div class="col-xl-3 col-lg-6 col-md-6 mb-50">
+            <div class="footer__widget">
+              <div class="footer__widget-title mb-30">
+                <a routerLink="/">
+                  <img [src]="logoSrc" alt="logo"/>
+                </a>
+              </div>
+              <div class="footer__widget-content">
+                <div class="footer__logo-area">
+                  <p>{{ slogan }}</p>
+                  <div class="social">
+                    <h4>Follow Us</h4>
+                    <ul>
+                      @for (link of socialLinks; track link.url) {
+                        <li>
+                          <a [href]="link.url" target="_blank" rel="noopener noreferrer">
+                            <i [class]="link.iconClass"></i>
+                          </a>
+                        </li>
+                      }
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Services -->
+          <div class="col-xl-2 col-lg-6 col-md-6 offset-xl-1 mb-50">
+            <div class="footer__widget">
+              <div class="footer__widget-title mb-25">
+                <h2>Services</h2>
+              </div>
+              <div class="footer__widget-content">
+                <div class="footer__services">
+                  <ul>
+                    @for (service of services; track service.slug) {
+                      <li>
+                        <a [routerLink]="['/services', service.slug]">{{ service.label }}</a>
+                      </li>
+                    }
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact Info -->
+          <div class="col-xl-2 col-lg-6 col-md-6 mb-50">
+            <div class="footer__widget">
+              <div class="footer__widget-title mb-25">
+                <h2>Contact Info</h2>
+              </div>
+              <div class="footer__widget-content">
+                <div class="footer__contact-info">
+                  <ul>
+                    <li>
+                      <div class="footer__contact-address">
+                        <span>{{ contactInfo.address }}</span>
+                      </div>
+                    </li>
+                    @for (item of contactInfo.items; track item.label) {
+                      <li>
+                        <div class="footer__contact-item">
+                          <h6>{{ item.label }}</h6>
+                          <p>{{ item.value }}</p>
+                        </div>
+                      </li>
+                    }
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Subscribe -->
+          <div class="col-xl-3 col-lg-6 col-md-6 offset-xl-1 mb-50">
+            <div class="footer__widget">
+              <div class="footer__widget-title mb-25">
+                <h2>Stay in Touch</h2>
+              </div>
+              <div class="footer__widget-content">
+                <div class="footer__subscribe">
+                  <div class="footer__subscribe-form">
+                    @if (!subscribeSuccess) {
+                      <form (ngSubmit)="onSubscribe()" #subscribeForm="ngForm">
+                        <input
+                          type="email"
+                          name="email"
+                          placeholder="Email Address"
+                          [(ngModel)]="subscriberEmail"
+                          required
+                          email
+                        />
+                        <button class="s-btn" type="submit" [disabled]="subscribeForm.invalid">
+                          <i class="fas fa-paper-plane"></i> subscribe now
+                        </button>
+                      </form>
+                    } @else {
+                      <p class="success-msg">Thanks for subscribing!</p>
+                    }
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer bottom -->
+      <div class="footer__copyright">
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="footer__copyright-text">
+              <p>
+                Copyright © {{ currentYear }}. Developed by
+                <a [href]="developer.url" target="_blank" rel="noopener noreferrer">{{ developer.name }}</a>.
+                All Rights Reserved.
+              </p>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="footer__policy">
+              @for (link of footerLinks; track link.label) {
+                <a [routerLink]="link.url">{{ link.label }}</a>
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

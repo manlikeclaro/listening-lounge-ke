@@ -1,0 +1,30 @@
+.client__area {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.client__slider .owl-stage {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.client__thumb {
+  opacity: 0.6;
+  -webkit-transition: all 0.3s ease-out 0s;
+  -moz-transition: all 0.3s ease-out 0s;
+  -ms-transition: all 0.3s ease-out 0s;
+  -o-transition: all 0.3s ease-out 0s;
+  transition: all 0.3s ease-out 0s;
+}
+
+.client__thumb img {
+  display: inline-block;
+  width: inherit !important;
+  margin: auto;
+}
+
+.client__thumb:hover {
+  opacity: 1;
+}

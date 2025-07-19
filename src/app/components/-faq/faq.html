@@ -1,0 +1,47 @@
+<section class="faq__area p-relative box-105 pink-soft-bg pt-110 pb-120">
+  <div class="faq__bg p-absolute" [style.background-image]="'url(' + backgroundImage + ')'" [attr.data-background]="backgroundImage"></div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xl-6 col-lg-12">
+        <div class="faq__wrapper pr-140">
+          <div class="section__title mb-20">
+            <div class="section__icon mb-10">
+              <span class="section__sub-title section__sub-title-2">Ask a Question</span>
+            </div>
+            <h1 class="mb-100">Everything You Need to Know About Us</h1>
+          </div>
+
+          <div class="faq__inner mr-30">
+            <div id="accordion">
+              @for (faq of faqs; track faq.question; let i = $index) {
+                <div class="card">
+                  <div class="card-header white-bg" [attr.id]="'heading' + i">
+                    <h5 class="mb-0">
+                      <button class="faq-accordion-btn"
+                              [class.collapsed]="activeIndex !== i"
+                              [attr.aria-expanded]="activeIndex === i"
+                              [attr.aria-controls]="'collapse' + i"
+                              (click)="activeIndex = activeIndex === i ? -1 : i">
+                        {{ faq.question }}
+                      </button>
+                    </h5>
+                  </div>
+
+                  <div class="collapse"
+                       [id]="'collapse' + i"
+                       [class.show]="activeIndex === i"
+                       [attr.aria-labelledby]="'heading' + i"
+                       data-parent="#accordion">
+                    <div class="card-body">
+                      <p>{{ faq.answer }}</p>
+                    </div>
+                  </div>
+                </div>
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

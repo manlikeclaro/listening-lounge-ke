@@ -1,0 +1,47 @@
+<section class="testimonial__area p-relative mt--230 box-105 mb-120">
+  <div class="testimonial__inner pt-130" [style.background-image]="'url(' + testimonialBg + ')'" [attr.data-background]="testimonialBg">
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-7 col-lg-7 col-md-10">
+          <div class="section__title mb-60">
+            <h1>What People Are Saying About Us</h1>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xl-12">
+          <div class="testimonial__slider mb--120 owl-carousel">
+            @for (testimonial of testimonials; track testimonial.name) {
+              <div class="testimonial__item p-relative white-bg">
+                <div class="testimonial__quote p-absolute">
+                  <img src="/assets/img/testimonial/quote.png" alt="quote">
+                </div>
+                <div class="testimonial__content">
+                  <div class="rating mb-15">
+                    <ul>
+                      @for (star of [].constructor(testimonial.rating); let i = $index; track i) {
+                        <li><i class="fas fa-star"></i></li>
+                      }
+                    </ul>
+
+                  </div>
+                  <p>{{ testimonial.message }}</p>
+                </div>
+                <div class="testimonial__person d-flex align-items-center">
+                  <div class="testimonial__avater">
+                    <img [src]="testimonial.avatar" [alt]="testimonial.name">
+                  </div>
+                  <div class="testimonial__info">
+                    <h3>{{ testimonial.name }}</h3>
+                    <span>{{ testimonial.title }}</span>
+                  </div>
+                </div>
+              </div>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
