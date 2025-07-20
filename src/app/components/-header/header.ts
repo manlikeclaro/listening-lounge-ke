@@ -1,5 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { MenuItem } from '../../models/menu-item';
 import { InfoArea } from './-info-area/info-area';
 
 @Component({
@@ -36,7 +37,7 @@ export class Header {
     contact: '/contact'
   };
 
-  menuItems = [
+  menuItems: MenuItem[] = [
     {
       label: 'home',
       route: this.routes.home,
@@ -54,22 +55,26 @@ export class Header {
         // { label: 'service details', route: this.routes.servicesDetails }
       ]
     },
-    {
-      label: 'pages',
-      route: null,
-      submenu: [
-        { label: 'our team', route: this.routes.team },
-        { label: 'team details', route: this.routes.teamDetails },
-        { label: 'events and offers', route: this.routes.events },
-        { label: 'appointment', route: this.routes.appointment }
-      ]
-    },
+    /*
+     {
+       label: 'pages',
+       route: null,
+       submenu: [
+         { label: 'our team', route: this.routes.team },
+         { label: 'team details', route: this.routes.teamDetails },
+         { label: 'events and offers', route: this.routes.events },
+         { label: 'appointment', route: this.routes.appointment }
+       ]
+     },
+    */
     {
       label: 'blog',
       route: this.routes.blog,
       submenu: [
-        { label: 'blog', route: this.routes.blog },
-        { label: 'blog details', route: this.routes.blogDetails }
+        /*
+         { label: 'blog', route: this.routes.blog },
+         { label: 'blog details', route: this.routes.blogDetails }
+        */
       ]
     },
     {

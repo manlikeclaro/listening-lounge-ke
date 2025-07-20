@@ -15,7 +15,7 @@
                 @for (item of menuItems; track item.label) {
                   <li class="has-dropdown">
                     <a [routerLink]="item.route">{{ item.label }}</a>
-                    @if (item.submenu.length > 0) {
+                    @if (item.submenu && item.submenu.length > 0) {
                       <ul class="submenu">
                         @for (sub of item.submenu; track sub.label) {
                           <li><a [routerLink]="sub.route">{{ sub.label }}</a></li>

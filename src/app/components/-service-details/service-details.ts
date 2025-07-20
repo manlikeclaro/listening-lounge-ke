@@ -1,11 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
+import { Pricing } from '../-pricing/pricing';
+import { PricingPlan } from '../../models/pricing-plan';
 import { SERVICES } from '../../shared/service-data';
 
 @Component({
   selector: 'app-service-details',
   imports: [
-    RouterLink
+    RouterLink,
+    Pricing
   ],
   templateUrl: './service-details.html',
   standalone: true,
@@ -16,8 +19,9 @@ import { SERVICES } from '../../shared/service-data';
 })
 export class ServiceDetails implements OnInit {
 
-  service: any;
   allServices: any;
+  service: any;
+  servicePricingPlans!: PricingPlan[];
 
   serviceTitle!: string;
   serviceDescription!: string;
@@ -47,6 +51,8 @@ export class ServiceDetails implements OnInit {
         this.serviceImage = this.service.image;
         this.serviceVideoUrl = this.service.video.url;
         this.serviceVideoBackground = this.service.video.background;
+
+        this.servicePricingPlans = this.service.pricingPlans || [];
       }
     });
   }

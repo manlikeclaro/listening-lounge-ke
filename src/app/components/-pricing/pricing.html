@@ -25,8 +25,12 @@
             <div class="pricing__content text-center pink-soft-bg p-relative">
               <div class="pricing__price p-absolute d-flex align-items-center justify-content-center">
                 <div class="pricing__price-inner">
-                  <h1>{{ plan.price }}<span>/</span></h1>
-                  <span>{{ plan.frequency }}</span>
+                  @if (plan.price){
+                    <h1>{{ plan.price }}<span>/</span></h1>
+                    <span>{{ plan.frequency }}</span>
+                  } @else {
+                    <span>Custom Quote</span>
+                  }
                 </div>
               </div>
 

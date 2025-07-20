@@ -4,7 +4,6 @@ import { ContactForm } from '../../components/-contact-form/contact-form';
 import { Faq } from '../../components/-faq/faq';
 import { FeaturesArea } from '../../components/-features-area/features-area';
 import { HeroSlider } from '../../components/-hero-slider/hero-slider';
-import { Pricing } from '../../components/-pricing/pricing';
 import { Testimonials } from '../../components/-testimonials/testimonials';
 
 @Component({
@@ -13,7 +12,6 @@ import { Testimonials } from '../../components/-testimonials/testimonials';
     HeroSlider,
     FeaturesArea,
     Faq,
-    Pricing,
     ContactForm,
     Testimonials,
     BlogSection
