@@ -11,7 +11,7 @@ import { SERVICES } from '../../shared/service-data';
   standalone: true,
   styleUrls: [
     './service-details.css',
-    '../../pages/services/services.css'
+    '../../pages/-services/services.css'
   ]
 })
 export class ServiceDetails implements OnInit {

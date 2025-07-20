@@ -7,13 +7,15 @@
       </div>
       <div class="info__wrapper" [attr.data-background]="backgroundImage">
         <div class="info__logo mt-25 mb-30">
-          <a [routerLink]="this.menuList[0].route"><img [src]="logoSrc" alt="logo"></a>
+          <a [routerLink]="this.menuList[0].route"
+             (click)="closeInfoArea()"><img [src]="logoSrc" alt="logo"></a>
         </div>
 
         <div class="info__content">
           <h4>{{ aboutInfo.title }}</h4>
           <p>{{ aboutInfo.description }}</p>
-          <a [routerLink]="aboutInfo.link" class="s-btn s-btn__white">{{ aboutInfo.linkText }}</a>
+          <a [routerLink]="aboutInfo.link" class="s-btn s-btn__white"
+             (click)="closeInfoArea()">{{ aboutInfo.linkText }}</a>
         </div>
 
         <div class="info__contact">

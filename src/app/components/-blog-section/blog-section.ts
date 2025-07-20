@@ -8,11 +8,11 @@ import { RouterLink } from '@angular/router';
     RouterLink,
     DatePipe
   ],
-  templateUrl: './blog.html',
-  styleUrl: './blog.css',
+  templateUrl: './blog-section.html',
+  styleUrl: './blog-section.css',
   standalone: true,
 })
-export class Blog implements OnInit {
+export class BlogSection implements OnInit {
 
   displayedBlogs: any[] = [];
 
