@@ -1,0 +1,74 @@
+<main>
+  <section class="page__title p-relative pt-200 pb-200"
+           [style.background-image]="'url(' + bannerImage + ')'">
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12">
+          <div class="page__title-inner text-center">
+            <div class="page__title-breadcrumb">
+              <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  @for (item of breadcrumb; track item.label) {
+                    <li class="breadcrumb-item" [class.active]="!item.url">
+                      @if (item.url) {
+                        <a [routerLink]="item.url">{{ item.label }}</a>
+                      } @else {
+                        {{ item.label }}
+                      }
+                    </li>
+                  }
+                </ol>
+              </nav>
+            </div>
+            <h1>Appointment</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="appointment__area pb-85 pt-120">
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-4 offset-xl-1 col-lg-4 offset-lg-1 pr-0">
+          <div class="appointment__opening sidebar-wrapper grey-bg-3 mb-30">
+            <div class="sidebar-title">
+              <h3>Opening Hours</h3>
+            </div>
+            <div class="sidebar-list-2 sidebar-list-3">
+              <ul>
+                @for (hour of openingHours; track hour) {
+                  <li>
+                    <h6>{{ hour.day }}:</h6>
+                    <span>{{ hour.hours }}</span>
+                  </li>
+                }
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-5 offset-xl-1 col-lg-5 offset-lg-1">
+          <div class="appointment__info pt-15">
+            <div class="section__title mb-20">
+              <div class="section__icon mb-10">
+                <span class="section__sub-title section__sub-title-2 section__sub-title-3">Contact info</span>
+              </div>
+              <h1>Have Any Questions or Ready to Talk?</h1>
+            </div>
+            <p>
+              Whether you're feeling overwhelmed, stressed, or just need someone to hear you out — we’re here.
+            </p>
+            <ul>
+              <li><span><i class="fas fa-phone"></i> {{ contactInfo.phone }}</span></li>
+              <li><span><i class="fas fa-map-marker-alt"></i> {{ contactInfo.address }}</span></li>
+              <li><a [href]="'mailto:' + contactInfo.email"><i class="fas fa-envelope-open"></i> {{ contactInfo.email }}</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <app-contact-form [smallerPaddingBottom]="true"></app-contact-form>
+
+</main>
