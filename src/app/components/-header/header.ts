@@ -32,8 +32,7 @@ export class Header {
     teamDetails: '/team-details',
     events: '/events',
     appointment: '/appointment',
-    blog: '/blog',
-    blogDetails: '/blog-details',
+    blogs: '/blogs',
     contact: '/contact'
   };
 
@@ -68,8 +67,8 @@ export class Header {
      },
     */
     {
-      label: 'blog',
-      route: this.routes.blog,
+      label: 'blogs',
+      route: this.routes.blogs,
       submenu: [
         /*
          { label: 'blog', route: this.routes.blog },

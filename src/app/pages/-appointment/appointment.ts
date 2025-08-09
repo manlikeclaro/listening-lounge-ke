@@ -12,7 +12,7 @@ import { ContactForm } from '../../components/-contact-form/contact-form';
   ],
   templateUrl: './appointment.html',
   standalone: true,
-  styleUrls: [ './appointment.css', '../../components/-contact-form/contact-form.css' ]
+  styleUrls: [ './appointment.css' ]
 })
 export class Appointment {
 
@@ -30,7 +30,7 @@ export class Appointment {
     { day: 'Thursday', hours: '8:00 AM – 9:00 PM' },
     { day: 'Friday', hours: '8:00 AM – 8:00 PM' },
     { day: 'Saturday', hours: '9:00 AM – 5:00 PM' },
-    // { day: 'Sunday', hours: '10:00 AM – 2:00 PM' }
+    { day: 'Sunday', hours: '10:00 AM – 2:00 PM' }
   ];
 
 

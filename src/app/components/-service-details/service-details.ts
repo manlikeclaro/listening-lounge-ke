@@ -12,10 +12,7 @@ import { SERVICES } from '../../shared/service-data';
   ],
   templateUrl: './service-details.html',
   standalone: true,
-  styleUrls: [
-    './service-details.css',
-    '../../pages/-services/services.css'
-  ]
+  styleUrls: [ './service-details.css' ]
 })
 export class ServiceDetails implements OnInit {
 

@@ -1,12 +1,14 @@
 import { AfterViewInit, Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { ScrollTop } from '../-scroll-top/scroll-top';
 
 declare var $: any;
 
 @Component({
   selector: 'app-info-area',
   imports: [
-    RouterLink
+    RouterLink,
+    ScrollTop
   ],
   templateUrl: './info-area.html',
   standalone: true,

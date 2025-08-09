@@ -12,7 +12,7 @@
 
   <div class="container-fluid">
     <div class="row">
-      @for (blog of displayedBlogs; track blog.title) {
+      @for (blog of displayedBlogs; track blog.slug) {
         <div class="col-xl-4 col-lg-6 col-md-6">
           <div class="blog__item mb-30">
             <div class="blog__thumb w-img fix">
@@ -29,7 +29,7 @@
                 </div>
               </div>
               <h2>
-                <a [routerLink]="['/blog', blog.id]">{{ blog.title }}</a>
+                <a [routerLink]="['/blogs', blog.slug]">{{ blog.title }}</a>
               </h2>
               <div class="blog__meta">
                 @for (tag of blog.tags; track tag) {

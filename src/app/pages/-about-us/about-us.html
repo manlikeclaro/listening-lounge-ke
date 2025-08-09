@@ -1,0 +1,75 @@
+<main>
+  <!-- Page Title -->
+  <section class="page__title p-relative pt-200 pb-200" [style.background-image]="'url(' + bannerImage + ')'">
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12">
+          <div class="page__title-inner text-center">
+            <div class="page__title-breadcrumb">
+              <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  @for (item of breadcrumb; track item.label) {
+                    <li class="breadcrumb-item" [class.active]="!item.url">
+                      @if (item.url) {
+                        <a [routerLink]="item.url">{{ item.label }}</a>
+                      } @else {
+                        {{ item.label }}
+                      }
+                    </li>
+                  }
+                </ol>
+              </nav>
+            </div>
+            <h1>Welcome to The Listening Lounge</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Area -->
+  <section class="about__area-2 pt-120 pb-120 box-105 p-relative">
+    <div class="container-fluid">
+      <div class="about__inner about__inner-3 p-relative">
+        <div class="about__bg-img p-absolute" [style.background-image]="'url(' + aboutBgImage + ')'"></div>
+        <div class="row">
+          <div class="col-xl-6 offset-xl-6">
+            <div class="about__content-wrapper pt-20 pl-85">
+              <div class="section__title mb-30">
+                <div class="section__icon mb-10">
+                  <span class="section__sub-title section__sub-title-2">{{ aboutSubtitle }}</span>
+                </div>
+                <h1 class="mb-100">{{ aboutTitle }}</h1>
+              </div>
+
+              <p>{{ aboutText }}</p>
+
+              <div class="about__info-2 d-sm-flex mb-60">
+                <div class="about__info-experience white-bg mr-40">
+                  <h1>{{ aboutExperience }}</h1>
+                </div>
+                <p>{{ aboutExperienceText }}</p>
+              </div>
+
+              <div class="about-bottom d-sm-flex">
+                <div class="about-author mr-30 mb-30">
+                  <img [src]="aboutFounder.image" alt="">
+                  <div class="ab-author">
+                    <h3>{{ aboutFounder.name }}</h3>
+                    <span>{{ aboutFounder.role }}</span>
+                  </div>
+                </div>
+                <div class="about-btn mr-40 mb-30">
+                  <a routerLink="/contact" class="s-btn s-btn__square s-btn__square-2">Book a free session</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <app-team></app-team>
+
+</main>

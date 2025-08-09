@@ -1,0 +1,249 @@
+.team__item:hover .team__thumb img {
+  -webkit-transform: scale(1.1);
+  -moz-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+.team__item:hover .team__social {
+  visibility: visible;
+  opacity: 1;
+  right: 0;
+}
+
+.team__item:hover .team__content {
+  background-color: #056c5f;
+  border-color: #056c5f;
+}
+
+.team__item:hover .team__content .team__name h3 {
+  color: #ffffff;
+}
+
+.team__item:hover .team__content .team__name span {
+  color: #ffffff;
+}
+
+.team__item:hover .team__content .team__info p {
+  color: #ffffff;
+}
+
+.team__social {
+  bottom: 0;
+  right: -60px;
+  padding: 20px 30px;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.team__social ul li a {
+  background-color: #ffffff;
+  -webkit-box-shadow: 0 0 20px 0 rgba(2, 44, 125, 0.07);
+  -moz-box-shadow: 0 0 20px 0 rgba(2, 44, 125, 0.07);
+  box-shadow: 0 0 20px 0 rgba(2, 44, 125, 0.07);
+}
+
+.team__social ul li a:hover {
+  background-color: #056c5f;
+  color: #ffffff;
+}
+
+.team__social-2 ul li a {
+  background: #ffffff;
+  border: 1px solid #dfe3e2;
+}
+
+.team__social-2 ul li a:hover {
+  background-color: #f8a683;
+  color: #056c5f;
+  border-color: #f8a683;
+}
+
+.team__content {
+  padding: 25px 30px 23px;
+  border: 1px solid #e0e4e4;
+  border-top: none;
+}
+
+.team__name {
+  border-bottom: 1px solid #eaecec;
+  margin-bottom: 15px;
+}
+
+.team__name span {
+  display: block;
+  margin-bottom: 15px;
+}
+
+.team__info p {
+  margin-bottom: 7px;
+}
+
+.team__info p:last-child {
+  margin-bottom: 0;
+}
+
+.team__menu button {
+  background: transparent;
+  font-size: 18px;
+  text-transform: capitalize;
+  margin-right: 38px;
+  margin-bottom: 25px;
+  position: relative;
+}
+
+.team__menu button::before {
+  position: absolute;
+  content: "";
+  left: 0;
+  bottom: -6px;
+  width: 100%;
+  height: 2px;
+  background: #056c5f;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: all 0.2s ease-out 0s;
+  -moz-transition: all 0.2s ease-out 0s;
+  -ms-transition: all 0.2s ease-out 0s;
+  -o-transition: all 0.2s ease-out 0s;
+  transition: all 0.2s ease-out 0s;
+}
+
+.team__menu button:hover {
+  color: #056c5f;
+}
+
+.team__menu button:hover::before {
+  bottom: 2px;
+  visibility: visible;
+  opacity: 1;
+}
+
+.team__menu button:last-child {
+  margin-right: 0;
+}
+
+.team__menu button.active {
+  color: #056c5f;
+}
+
+.team__menu button.active::before {
+  bottom: 2px;
+  visibility: visible;
+  opacity: 1;
+}
+
+.team__details-title h2 {
+  padding-bottom: 32px;
+  border-bottom: 1px solid #e0e4e4;
+  margin-bottom: 0;
+  position: relative;
+  font-size: 30px;
+}
+
+.team__details-title h2::before {
+  position: absolute;
+  content: "";
+  left: 0;
+  bottom: -2px;
+  width: 80px;
+  height: 3px;
+  background-color: #f8a683;
+}
+
+.team__experience-item h2 {
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+.team__experience-item .team__experience-meta span {
+  position: relative;
+  display: inline-block;
+  padding-right: 12px;
+  margin-right: 1px;
+}
+
+.team__experience-item .team__experience-meta span::before {
+  position: absolute;
+  content: "";
+  right: 0;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  width: 6px;
+  height: 1px;
+  background: #848b8a;
+}
+
+.team__experience-item .team__experience-meta span:last-child::before {
+  display: none;
+}
+
+.team__experience-area-item {
+  padding: 30px 25px;
+  border: 1px solid #e0e4e4;
+}
+
+.team__experience-area-item span::before {
+  color: #056c5f;
+  font-size: 50px;
+}
+
+.team__experience-area-item h3 {
+  font-size: 24px;
+  line-height: 28px;
+  margin-bottom: 0;
+}
+
+.team__experience-area-item:hover {
+  border-color: #056c5f;
+  background-color: #056c5f;
+}
+
+.team__experience-area-item:hover span::before {
+  color: #ffffff;
+}
+
+.team__experience-area-item:hover h3 {
+  color: #ffffff;
+}
+
+.team__achivement p {
+  margin-bottom: 23px;
+}
+
+.team__achivement-thumb img {
+  width: inherit !important;
+}
+
+.team__contact p {
+  margin-bottom: 24px;
+}
+
+.team__contact input, .team__contact textarea {
+  height: 60px;
+  width: 100%;
+  padding: 20px;
+  font-size: 16px;
+  border: 1px solid #e0e4e4;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  margin-bottom: 30px;
+  color: #056c5f;
+}
+
+.team__contact input::placeholder, .team__contact textarea::placeholder {
+  color: #999999;
+}
+
+.team__contact input:focus, .team__contact textarea:focus {
+  border-color: #056c5f;
+}
+
+.team__contact textarea {
+  height: 200px;
+  resize: none;
+}
