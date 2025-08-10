@@ -1,7 +1,7 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { BLOGS } from '../../shared/blog-data';
+import { Blog, BLOGS, SocialLink } from '../../shared/blog-data';
 
 @Component({
   selector: 'app-blog-details',
@@ -25,26 +25,29 @@ export class BlogDetails implements OnInit {
     { label: '', route: null }
   ];
 
-  allBlogs: any[] = BLOGS;
-  blog: any = null;
-  popularBlogs: any[] = [];
+  blog!: Blog | undefined;
+  allBlogs!: Blog[];
+  popularBlogs!: Partial<Blog>[];
+  authorSocialLinks!: SocialLink[] | undefined;
 
-  constructor(private route: ActivatedRoute) {
-  }
+  constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       const slug = params.get('slug');
-      this.blog = BLOGS.find(b => b.slug === slug) || null;
+      this.blog = BLOGS.find(b => b.slug === slug);
       this.allBlogs = BLOGS;
 
       if (this.blog) {
         // update breadcrumb label
         this.breadcrumbs[2].label = this.blog.title;
 
+        // store author's social links
+        this.authorSocialLinks = this.blog.authorBio.socialLinks;
+
         // prepare sidebar feeds (exclude current)
         this.popularBlogs = BLOGS
-          .filter(blog => blog.slug !== this.blog.slug)
+          .filter(blog => blog.slug !== this.blog!.slug)
           .slice(0, 4)
           .map(blog => ({
             slug: blog.slug,
