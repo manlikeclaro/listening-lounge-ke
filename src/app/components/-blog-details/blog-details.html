@@ -82,7 +82,7 @@
                       <div class="col-xl-8 col-lg-8 col-md-8 mb-15">
                         <div class="blog-post-tag">
                           <span>Related Tags</span>
-                          @if (blog.tags?.length) {
+                          @if (blog.tags.length) {
                             @for (tag of blog.tags; track tag) {
                               <!--                            <a [routerLink]="['/blogs', tag]">{{ tag }}</a>-->
                               <a> {{ tag }} </a>
@@ -110,7 +110,7 @@
                 <!-- author box -->
                 <div class="author mt-80 mb-40 grey-bg">
                   <div class="author__img text-center mb-30">
-                    <img [src]="blog.authorBio?.image || 'assets/img/blog/author/author.jpg'" [alt]="blog.author">
+                    <img [src]="blog.authorBio.image || 'assets/img/blog/author/author.jpg'" [alt]="blog.author">
                   </div>
                   <div class="author__text text-center">
                     <h3>{{ blog.author }}</h3>
@@ -121,7 +121,7 @@
                         </a>
                       }
                     </div>
-                    <p>{{ blog.authorBio?.bio }}</p>
+                    <p>{{ blog.authorBio.bio }}</p>
                   </div>
                 </div>
               </article>
@@ -138,7 +138,7 @@
               </div>
 
               <ul class="recent-posts">
-                @if (popularBlogs?.length) {
+                @if (popularBlogs.length) {
                   @for (blog of popularBlogs; track blog.slug) {
                     <li class="d-flex">
                       <div class="rc-thumb mr-15">
