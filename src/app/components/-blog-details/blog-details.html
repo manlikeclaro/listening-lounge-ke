@@ -1,0 +1,168 @@
+<main>
+  <!-- page title area -->
+  <section class="page__title p-relative pt-200 pb-200" [style.background-image]="'url(' + bannerImage + ')'">
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12">
+          <div class="page__title-inner text-center">
+            <div class="page__title-breadcrumb">
+              <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  @for (item of breadcrumbs; track item.route) {
+                    <li class="breadcrumb-item" [class.active]="!item.route" [attr.aria-current]="!item.route ? 'page' : null">
+                      @if (item.route) {
+                        <a [routerLink]="item.route">{{ item.label }}</a>
+                      } @else {
+                        Blog Details
+                      }
+                    </li>
+                  }
+                </ol>
+              </nav>
+            </div>
+            <h1> {{ blog.title }} </h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- page title area end -->
+
+  <!-- blog area start -->
+  <section class="blog__area pt-120 pb-80">
+    <div class="container">
+      <div class="row">
+
+        <!-- main article -->
+        <div class="col-xl-9 col-lg-9">
+          <div class="blog_details-wrapper">
+            <article class="postbox mb-40">
+              <div class="postbox__thumb w-img">
+                <img [src]="blog.image" [alt]="blog.title">
+              </div>
+
+              <div class="postbox__content postbox__content-2">
+                <div class="blog__meta blog__meta-2 blog__meta-4 mb-15">
+                  <span><i class="fas fa-calendar-check"></i> {{ blog.date | date:'longDate' }}</span>
+                  <span>
+<!--                    <a [routerLink]="['/team', blog.authorSlug]">-->
+                    <a><i class="fas fa-user"></i> {{ blog.author }}</a>
+                  </span>
+                </div>
+
+                <h3 class="postbox__title postbox__title-2 mb-20">
+                  {{ blog.title }}
+                </h3>
+
+                <div class="postbox__text mb-25">
+                  <p>{{ blog.content }}</p>
+
+                  @if (blog.quote) {
+                    <div class="postbox__quote mt-35">
+                      <blockquote>
+                        <p>{{ blog.quote.text }}</p>
+                        <footer>- {{ blog.quote.author }}</footer>
+                      </blockquote>
+                    </div>
+                  }
+
+                  @if (blog.moreText) {
+                    <p>{{ blog.moreText }}</p>
+                  }
+
+                  @if (blog.subSections) {
+                    @for (sec of blog.subSections; track sec.heading) {
+                      <div class="inner-content mt-35">
+                        <h4>{{ sec.heading }}</h4>
+                        <p>{{ sec.text }}</p>
+                      </div>
+                    }
+                  }
+
+                  <div class="row mt-50">
+                    <div class="col-xl-8 col-lg-8 col-md-8 mb-15">
+                      <div class="blog-post-tag">
+                        <span>Related Tags</span>
+                        @if (blog.tags?.length) {
+                          @for (tag of blog.tags; track tag) {
+<!--                            <a [routerLink]="['/blogs', tag]">{{ tag }}</a>-->
+                            <a> {{ tag }} </a>
+                          }
+                        } @else {
+                          <a href="#">general</a>
+                        }
+                      </div>
+                    </div>
+
+                    <div class="col-xl-4 col-lg-4 col-md-4 mb-15">
+                      <div class="blog-share-icon text-start text-md-right">
+                        <span>Share: </span>
+                        <a href="#" aria-label="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Share on Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Share on Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Share on Google Plus"><i class="fab fa-google-plus-g"></i></a>
+                        <a href="#" aria-label="Share on Vimeo"><i class="fab fa-vimeo-v"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- author box -->
+              <div class="author mt-80 mb-40 grey-bg">
+                <div class="author__img text-center mb-30">
+                  <img [src]="blog.authorBio?.image || 'assets/img/blog/author/author.jpg'" [alt]="blog.author">
+                </div>
+                <div class="author__text text-center">
+                  <h3>{{ blog.author }}</h3>
+                  <div class="author__icon">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-behance-square"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-vimeo-v"></i></a>
+                  </div>
+                  <p>{{ blog.authorBio?.bio }}</p>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <!-- sidebar -->
+        <div class="col-xl-3 col-lg-3">
+          <div class="blog__sidebar-wrapper">
+            <div class="widget sidebar-wrapper mb-40">
+              <div class="sidebar-title mb-25">
+                <h3>Popular Feeds</h3>
+              </div>
+
+              <ul class="recent-posts">
+                @if (popularBlogs?.length) {
+                  @for (blog of popularBlogs; track blog.slug) {
+                    <li class="d-flex">
+                      <div class="rc-thumb mr-15">
+                        <a [routerLink]="['/blogs', blog.slug]">
+                          <img [src]="blog.sidebarImage" [alt]="blog.title">
+                        </a>
+                      </div>
+                      <div class="rc-text">
+                        <h6><a [routerLink]="['/blogs', blog.slug]">{{ blog.title }}</a></h6>
+                        <div class="rc-meta"><span>{{ blog.date | date:'longDate' }}</span></div>
+                      </div>
+                    </li>
+                  }
+                } @else {
+                  <li>No popular feeds available.</li>
+                }
+              </ul>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <!-- blog area end -->
+</main>

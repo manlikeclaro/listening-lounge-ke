@@ -14,7 +14,9 @@ export const routes: Routes = [
   { path: 'services', component: Services },
   { path: 'services/:slug', component: ServiceDetails },
   { path: 'blogs', component: Blogs },
+  // { path: 'blogs/:tag', component: Blogs }, // TODO: filter blogs by tags (blog details page)
   { path: 'blogs/:slug', component: BlogDetails },
   { path: 'contact', component: Appointment },
+  // { path: 'team/:slug', component: TeamDetails }, // TODO: implement team member route (blog details page)
   { path: '**', redirectTo: '' } // catch-all
 ];
