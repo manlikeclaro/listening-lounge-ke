@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { MenuItem } from '../../models/menu-item';
+import { SERVICES } from '../../shared/service-data';
 import { InfoArea } from './-info-area/info-area';
 
 @Component({
@@ -27,7 +28,7 @@ export class Header {
     home: '/',
     aboutUs: '/about-us',
     services: '/services',
-    // servicesDetails: '/services/:slug',
+    servicesDetails: (slug: string) => `/services/${slug}`,
     team: '/team',
     teamDetails: '/team-details',
     events: '/events',
@@ -43,43 +44,25 @@ export class Header {
       submenu: []
     },
     {
+      label: 'services',
+      route: this.routes.services,
+      submenu: SERVICES.map(service => ({
+        label: service.label,
+        route: this.routes.servicesDetails(service.slug)
+      }))
+    },
+    {
       label: 'about',
       route: this.routes.aboutUs,
       submenu: []
     },
     {
-      label: 'services',
-      route: this.routes.services,
-      submenu: [
-        // { label: 'service details', route: this.routes.servicesDetails }
-      ]
-    },
-    /*
-     {
-       label: 'pages',
-       route: null,
-       submenu: [
-         { label: 'our team', route: this.routes.team },
-         { label: 'team details', route: this.routes.teamDetails },
-         { label: 'events and offers', route: this.routes.events },
-         { label: 'appointment', route: this.routes.appointment }
-       ]
-     },
-    */
-    {
       label: 'blogs',
-      route: this.routes.blogs,
-      submenu: [
-        /*
-         { label: 'blog', route: this.routes.blog },
-         { label: 'blog details', route: this.routes.blogDetails }
-        */
-      ]
+      route: this.routes.blogs
     },
     {
       label: 'contact',
-      route: this.routes.contact,
-      submenu: []
+      route: this.routes.contact
     }
   ];
 }
