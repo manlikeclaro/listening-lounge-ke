@@ -15,8 +15,8 @@
       @for (member of team; track member.name) {
         <div class="col-xl-4 col-lg-4 col-md-6">
           <div class="team__item mb-30">
-            <div class="team__thumb w-img fix p-relative">
-              <img class="transition-3" [src]="member.image" [alt]="member.name">
+            <div class="team__thumb w-img fix p-relative mb-2">
+              <img class="transition-3 rounded-3" [src]="member.image" [alt]="member.name">
               <div class="team__social social pink-soft-bg p-absolute transition-3">
                 <ul>
                   @for (social of member.socials; track social) {
@@ -27,7 +27,7 @@
                 </ul>
               </div>
             </div>
-            <div class="team__content text-center white-bg transition-3">
+            <div class="team__content text-center white-bg transition-3 rounded-3">
               <div class="team__name">
                 <h3>{{ member.name }}</h3>
                 <span>{{ member.role }}</span>

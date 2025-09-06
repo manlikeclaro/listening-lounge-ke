@@ -17,8 +17,9 @@
           <form #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm)" class="contact__form">
             <div class="row">
               <div class="col-xl-12">
-                <input name="name" [(ngModel)]="contact.name" class="contact__input" type="text" placeholder="Your Name" required/>
+                <input name="name" [(ngModel)]="contact.name" class="contact__input" type="text" placeholder="Full Name" required/>
               </div>
+
               <div class="col-xl-12">
                 <input name="email" [(ngModel)]="contact.email" class="contact__input" type="email" placeholder="Email Address" required/>
               </div>
@@ -26,24 +27,30 @@
 
             <div class="row">
               <div class="col-xl-12">
-                <input name="phone" [(ngModel)]="contact.phone" class="contact__input" type="text" placeholder="Phone (optional)"/>
+                <input name="phone" [(ngModel)]="contact.phone" class="contact__input" type="tel" placeholder="Phone (optional)"/>
               </div>
             </div>
 
             <div class="row">
               <div class="col-xl-12">
-                <textarea name="message" [(ngModel)]="contact.message" class="contact__input txt-area" rows="6" placeholder="Write something you'd like to share..." required></textarea>
+                <textarea name="message" [(ngModel)]="contact.message" class="contact__input txt-area" rows="6" placeholder="Tell us what’s on your mind..." required></textarea>
               </div>
             </div>
 
             <div class="row">
               <div class="col-xl-12">
-                <button class="s-btn s-btn__pink" type="submit">Start Conversation</button>
+                <button class="s-btn s-btn__pink" type="submit" [disabled]="isSubmitting">
+                  @if (!isSubmitting) {
+                    Start Conversation
+                  }
+                  @if (isSubmitting) {
+                    <span class="btn-loader"><span class="spinner"></span> Sending...</span>
+                  }
+                </button>
               </div>
             </div>
           </form>
 
-          <p class="ajax-response">{{ responseMessage }}</p>
         </div>
       </div>
 

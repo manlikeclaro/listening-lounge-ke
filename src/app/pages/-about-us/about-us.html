@@ -52,13 +52,15 @@
               </div>
 
               <div class="about-bottom d-sm-flex">
-                <div class="about-author mr-30 mb-30">
-                  <img [src]="aboutFounder.image" alt="">
-                  <div class="ab-author">
-                    <h3>{{ aboutFounder.name }}</h3>
-                    <span>{{ aboutFounder.role }}</span>
+                @if (selectedFounder) {
+                  <div class="about-author mr-30 mb-30">
+                    <img [src]="selectedFounder.image" alt="">
+                    <div class="ab-author">
+                      <h3>{{ selectedFounder.name }}</h3>
+                      <span>{{ selectedFounder.role }}</span>
+                    </div>
                   </div>
-                </div>
+                }
                 <div class="about-btn mr-40 mb-30">
                   <a routerLink="/contact" class="s-btn s-btn__square s-btn__square-2">Book a free session</a>
                 </div>

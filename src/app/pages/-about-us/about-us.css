@@ -65,6 +65,7 @@
 
 .about-author img {
   float: left;
+  border-radius: 50%;
 }
 
 .ab-author {

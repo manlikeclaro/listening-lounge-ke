@@ -13,38 +13,27 @@ export class Team {
   team = [
     {
       image: 'assets/img/team/team-1.jpg',
-      name: 'Ristopher Givera',
+      name: 'Tracy Kamere',
       role: 'Lead Listener',
-      email: 'ristopher@listeninglounge.co.ke',
-      phone: '+254 700 123 456',
+      email: 'tracy@listeninglounge.co.ke',
+      phone: '+254 700 456 789',
       socials: [
-        { platform: 'facebook', url: 'https://facebook.com/ListeningLounge', icon: 'fab fa-facebook-f' },
-        { platform: 'twitter', url: 'https://twitter.com/ListeningLounge', icon: 'fab fa-twitter' },
-        { platform: 'instagram', url: 'https://instagram.com/listeninglounge', icon: 'fab fa-instagram' },
-        { platform: 'linkedin', url: 'https://linkedin.com/company/the-listening-lounge', icon: 'fab fa-linkedin-in' }
+        { platform: 'facebook', url: 'https://facebook.com/tracykamere', icon: 'fab fa-facebook-f' },
+        { platform: 'twitter', url: 'https://twitter.com/tracykamere', icon: 'fab fa-twitter' },
+        { platform: 'instagram', url: 'https://instagram.com/tracykamere', icon: 'fab fa-instagram' },
+        { platform: 'linkedin', url: 'https://linkedin.com/in/tracy-kamere', icon: 'fab fa-linkedin-in' }
       ]
     },
     {
       image: 'assets/img/team/team-2.jpg',
-      name: 'Donnie Anderson',
+      name: 'Linda Kamere',
       role: 'Senior Listener',
-      email: 'donnie@listeninglounge.co.ke',
-      phone: '+254 700 234 567',
+      email: 'linda@listeninglounge.co.ke',
+      phone: '+254 700 567 890',
       socials: [
-        { platform: 'facebook', url: 'https://facebook.com/DonnieListening', icon: 'fab fa-facebook-f' },
-        { platform: 'twitter', url: 'https://twitter.com/DonnieListening', icon: 'fab fa-twitter' },
-        { platform: 'linkedin', url: 'https://linkedin.com/in/donnie-anderson', icon: 'fab fa-linkedin-in' }
-      ]
-    },
-    {
-      image: 'assets/img/team/team-3.jpg',
-      name: 'Steves Musayin',
-      role: 'Community Listener',
-      email: 'steves@listeninglounge.co.ke',
-      phone: '+254 700 345 678',
-      socials: [
-        { platform: 'instagram', url: 'https://instagram.com/steveslistens', icon: 'fab fa-instagram' },
-        { platform: 'twitter', url: 'https://twitter.com/steveslistens', icon: 'fab fa-twitter' }
+        { platform: 'facebook', url: 'https://facebook.com/lindakamere', icon: 'fab fa-facebook-f' },
+        { platform: 'twitter', url: 'https://twitter.com/lindakamere', icon: 'fab fa-twitter' },
+        { platform: 'linkedin', url: 'https://linkedin.com/in/linda-kamere', icon: 'fab fa-linkedin-in' }
       ]
     }
   ];
