@@ -5,11 +5,11 @@ import { PricingPlan } from '../../models/pricing-plan';
 import { Booking } from '../booking.interface';
 
 @Component({
-  selector: 'app-booking-modal',
-  templateUrl: './booking-modal.html',
-  standalone: true,
   imports: [ ReactiveFormsModule ],
-  styleUrl: './booking-modal.css'
+  selector: 'app-booking-modal',
+  standalone: true,
+  styleUrls: [ './booking-modal.css' ],
+  templateUrl: './booking-modal.html'
 })
 export class BookingModal implements OnInit {
   @Input() plan!: PricingPlan;

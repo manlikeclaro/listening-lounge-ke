@@ -1,10 +1,10 @@
 import { NgClass } from '@angular/common';
 import { Component, Input, ViewEncapsulation } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import * as EmailJS from 'emailjs-com';
 import { environment } from '../../../environments/environment';
+import { ToastService } from '../../services/toast.service';
 
 @Component({
   selector: 'app-contact-form',
@@ -32,27 +32,16 @@ export class ContactForm {
 
   constructor(
     private sanitizer: DomSanitizer,
-    private snackBar: MatSnackBar
+    private toastService: ToastService
   ) {
     this.safeMapUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.mapUrl);
-  }
-
-  private showToast(message: string, panelClass: string[], duration: number) {
-    const snackBarConfig: MatSnackBarConfig = {
-      duration: duration,
-      panelClass: panelClass,
-      horizontalPosition: 'end',
-      verticalPosition: 'top'
-    };
-
-    this.snackBar.open(message, undefined, snackBarConfig);
   }
 
   isSubmitting = false;
 
   onSubmit(form: any) {
     if (!form.valid) {
-      this.showToast('⚠️ Please complete all required fields before submitting the form.', [ 'toast-error' ], 5000);
+      this.toastService.showToast('⚠️ Please complete all required fields before submitting the form.', [ 'toast-error' ], 5000);
       return;
     }
 
@@ -88,7 +77,7 @@ export class ContactForm {
 
   // Success handler
   private handleSuccess(form: any, params: any) {
-    this.showToast('✅ Your message has been sent successfully. Our support team will get back to you soon.', [ 'toast-success' ], 5000);
+    this.toastService.showToast('✅ Your message has been sent successfully. Our support team will get back to you soon.', [ 'toast-success' ], 5000);
     this.sendAcknowledgment(params);
     form.resetForm();
   }
@@ -96,7 +85,7 @@ export class ContactForm {
   // Error handler
   private handleError(err: any) {
     console.error('EmailJS Error:', err);
-    this.showToast('⚠️ We couldn’t send your message at this time. Please try again later.', [ 'toast-error' ], 6000);
+    this.toastService.showToast('⚠️ We couldn’t send your message at this time. Please try again later.', [ 'toast-error' ], 6000);
   }
 
   // Send acknowledgment email to sender
