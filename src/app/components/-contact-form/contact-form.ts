@@ -2,8 +2,7 @@ import { NgClass } from '@angular/common';
 import { Component, Input, ViewEncapsulation } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import * as EmailJS from 'emailjs-com';
-import { environment } from '../../../environments/environment';
+import { EmailService } from '../../services/email.service';
 import { ToastService } from '../../services/toast.service';
 
 @Component({
@@ -32,7 +31,8 @@ export class ContactForm {
 
   constructor(
     private sanitizer: DomSanitizer,
-    private toastService: ToastService
+    private toastService: ToastService,
+    private emailService: EmailService
   ) {
     this.safeMapUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.mapUrl);
   }
@@ -46,7 +46,7 @@ export class ContactForm {
     }
 
     const emailJsParams = this.buildParams();
-    this.sendEmail(form, emailJsParams);
+    this.sendMessage(form, emailJsParams);
   }
 
   // Build params for EmailJS
@@ -61,24 +61,21 @@ export class ContactForm {
   }
 
   // Send email to team
-  private sendEmail(form: any, params: any) {
+  private sendMessage(form: any, params: any) {
     this.isSubmitting = true;
 
-    EmailJS.send(
-      environment.emailJs.serviceId,
-      environment.emailJs.templateId,
-      params,
-      environment.emailJs.publicKey
-    )
+    this.emailService.sendEmail(params)
       .then(() => this.handleSuccess(form, params))
-      .catch((err) => this.handleError(err))
+      .catch(err => this.handleError(err))
       .finally(() => (this.isSubmitting = false));
   }
 
   // Success handler
   private handleSuccess(form: any, params: any) {
     this.toastService.showToast('✅ Your message has been sent successfully. Our support team will get back to you soon.', [ 'toast-success' ], 5000);
-    this.sendAcknowledgment(params);
+    this.emailService.sendAcknowledgment(params).catch(err =>
+      console.error('Acknowledgment email failed:', err)
+    );
     form.resetForm();
   }
 
@@ -86,21 +83,5 @@ export class ContactForm {
   private handleError(err: any) {
     console.error('EmailJS Error:', err);
     this.toastService.showToast('⚠️ We couldn’t send your message at this time. Please try again later.', [ 'toast-error' ], 6000);
-  }
-
-  // Send acknowledgment email to sender
-  private sendAcknowledgment(params: any) {
-    const ackParams = {
-      to_name: params.sender_name,
-      to_email: params.sender_email,
-      user_message: params.sender_message
-    };
-
-    EmailJS.send(
-      environment.emailJs.serviceId,
-      environment.emailJs.templateAckId,
-      ackParams,
-      environment.emailJs.publicKey
-    ).catch((err) => console.error('Acknowledgment email failed:', err));
   }
 }
