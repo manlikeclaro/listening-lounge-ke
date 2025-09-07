@@ -33,6 +33,15 @@
           }
         }
 
+        <input type="tel" placeholder="Phone Number" formControlName="phone"/>
+        @if (bookingForm.get('phone')?.invalid && bookingForm.get('phone')?.touched) {
+          @if (bookingForm.get('phone')?.errors?.['required']) {
+            <div class="text-danger small mb-2">Phone number is required</div>
+          } @else {
+            <div class="text-danger small mb-2">Enter a valid Kenyan phone number</div>
+          }
+        }
+
         <input type="date" placeholder="Choose Date" formControlName="date" [min]="today" class="form-control"/>
         @if (bookingForm.get('date')?.invalid && bookingForm.get('date')?.touched) {
           <div class="text-danger small mb-2">Date is required</div>
@@ -53,9 +62,14 @@
         <textarea cols="30" rows="5" placeholder="Additional Notes" formControlName="notes"></textarea>
 
         <!-- Submit Button -->
-        <button type="button" class="s-btn s-btn__square s-btn__square-2 mt-3" (click)="submitBooking()" [disabled]="bookingForm.invalid">
-          Confirm Booking
+        <button type="button" class="s-btn s-btn__square s-btn__square-2 mt-3" (click)="submitBooking()" [disabled]="bookingForm.invalid || isSubmitting">
+          @if (!isSubmitting) {
+            <span> Confirm Booking </span>
+          } @else {
+            <span class="btn-loader"><span class="spinner"></span> Processing... </span>
+          }
         </button>
+
       </form>
     </div>
   </div>

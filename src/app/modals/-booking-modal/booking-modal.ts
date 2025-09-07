@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, ValidationErrors, Validators } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { PricingPlan } from '../../models/pricing-plan';
+import { BookingService } from '../../services/booking.service';
 import { Booking } from '../booking.interface';
 
 @Component({
@@ -16,14 +17,17 @@ export class BookingModal implements OnInit {
   bookingForm: FormGroup;
 
   today: string = '';
+  isSubmitting = false;
 
   constructor(
     private formBuilder: FormBuilder,
-    public activeModal: NgbActiveModal
+    public activeModal: NgbActiveModal,
+    private bookingService: BookingService
   ) {
     this.bookingForm = this.formBuilder.group({
       name: [ '', Validators.required ],
       email: [ '', [ Validators.required, Validators.email ] ],
+      phone: [ '', Validators.required, Validators.pattern(/^(\+2547\d{8}|07\d{8})$/) ],
       date: [ null, Validators.required ],
       time: [ null, Validators.required ],
       notes: [ '' ]
@@ -50,7 +54,7 @@ export class BookingModal implements OnInit {
     return selected <= now ? { pastDateTime: true } : null;
   };
 
-  submitBooking() {
+  async submitBooking() {
     if (this.bookingForm.invalid) {
       this.bookingForm.markAllAsTouched();
       return;
@@ -61,13 +65,17 @@ export class BookingModal implements OnInit {
       ...this.bookingForm.value
     };
 
-    console.log('Booking submitted:', booking);
-    this.activeModal.close(booking);
+    this.isSubmitting = true;
+
+    try {
+      await this.bookingService.makeBooking(booking);
+      this.activeModal.close(booking);
+    } finally {
+      this.isSubmitting = false;
+    }
   }
 
   close() {
     this.activeModal.dismiss();
   }
-
-  protected readonly print = print;
 }
