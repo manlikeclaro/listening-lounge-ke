@@ -26,7 +26,7 @@ export class AboutUs {
   ];
 
   // About section
-  aboutBgImage = 'assets/img/about/about-2.jpg';
+  aboutBgImage = 'assets/img/about/about-main.jpg';
   aboutTitle = 'Feel Lighter, One Conversation at a Time';
   aboutSubtitle = 'Welcome to The Listening Lounge';
   aboutText = `The Listening Lounge is a safe, non-clinical space to unburden your mind. We're not therapists — our trained listeners don't diagnose or provide medical advice — but they offer a compassionate,
@@ -39,13 +39,13 @@ export class AboutUs {
   // Author / Founder
   aboutFounder = [
     {
-      image: 'assets/img/about/author.png',
+      image: 'assets/img/about/author-2.png',
       name: 'Tracy Kamere',
       role: 'Co-Founder & Program Coordinator',
       bio: `Tracy co-founded The Listening Lounge in 2025 with a vision to create a safe, supportive space where anyone can share openly. She focuses on program development and listener training.`
     },
     {
-      image: 'assets/img/about/author.png',
+      image: 'assets/img/about/author-1.png',
       name: 'Linda Kamere',
       role: 'Co-Founder & Engagement Lead',
       bio: `Linda co-founded The Listening Lounge in 2025 to make empathetic listening a cornerstone of community well-being. She leads initiatives that bring listening programs into schools and workplaces.`

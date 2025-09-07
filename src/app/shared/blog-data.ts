@@ -7,6 +7,7 @@ export interface Blog {
   sidebarImage: string;
   date: Date;
   tags: string[];
+  excerpt?: string;
   content: string;
   quote: Quote;
   subSections: BlogSubSection[];
@@ -41,10 +42,11 @@ export const BLOGS: Blog[] = [
     title: 'Why Talking Helps: The Science of Feeling Heard',
     author: 'Leila Kimani',
     authorSlug: 'leila-kimani',
-    image: 'assets/img/blog/blog-big-1.jpg',
+    image: 'assets/img/blog/why-talking-helps.jpg',
     sidebarImage: 'assets/img/blog/sidebar/blog-sm-1.jpg',
     date: new Date('2025-07-05'),
     tags: [ 'Emotional Support', 'Mental Wellness' ],
+    excerpt: 'We explore the science behind why being heard lightens the emotional load and how connection helps you feel less alone.',
     content: `When we speak openly about our struggles, something remarkable happens inside our brains — our bodies release oxytocin, the very same “bonding” chemical that connects us to those we love and trust. This isn’t just emotional fluff; it’s hard science. Talking transforms our inner turmoil into something we can see, name, and reframe. It’s more than a simple “vent session” — it’s a neurological reset that helps us step back, gain clarity, and breathe again. By sharing our feelings with someone who truly listens, we’re not only validating our own experiences, but also lightening the emotional weight we’ve been carrying alone. It’s a gentle reminder that our stories matter, and that in voicing them, we open the door to healing.`,
     quote: {
       text: 'Sometimes, the best therapy is not advice, but the unshakable presence of a friend who listens without rushing you.',
@@ -74,10 +76,11 @@ export const BLOGS: Blog[] = [
     title: 'You Don’t Need Fixing — Just a Place to Be Real',
     author: 'Samuel Okoth',
     authorSlug: 'samuel-okoth',
-    image: 'assets/img/blog/blog-big-1.jpg',
+    image: 'assets/img/blog/you-dont-need-fix.jpg',
     sidebarImage: 'assets/img/blog/sidebar/blog-sm-1.jpg',
     date: new Date('2025-07-08'),
     tags: [ 'Empathy', 'Self-Acceptance' ],
+    excerpt: 'Advice isn’t always what people want — sometimes a non-judgmental space to be real is enough to start feeling better.',
     content: `Not every conversation has to end with a solution, a plan, or a “next step.” Sometimes the deepest form of healing comes from being accepted exactly as we are — messy, uncertain, and gloriously human. The modern obsession with fixing ourselves can be exhausting. There is tremendous freedom in simply existing without the pressure to be “better” every moment. When we find a space where we can speak without being edited or evaluated, we give ourselves the permission to just be, and in that stillness, we often discover our truest selves.`,
     quote: {
       text: 'You are not broken — you are in the beautiful, imperfect process of unfolding into who you were always meant to be.',
@@ -107,10 +110,11 @@ export const BLOGS: Blog[] = [
     title: 'My First Time Unburdening — What I Wish I Knew',
     author: 'Anonymous Story',
     authorSlug: 'anonymous-story',
-    image: 'assets/img/blog/blog-big-1.jpg',
+    image: 'assets/img/blog/first-time-unburdening.jpg',
     sidebarImage: 'assets/img/blog/sidebar/blog-sm-1.jpg',
     date: new Date('2025-07-10'),
     tags: [ 'Real Stories', 'Emotional Release' ],
+    excerpt: 'A personal account of opening up for the first time and the surprising relief that followed.',
     content: `I had carried my worries like heavy stones in my pockets for years, convinced that no one could truly understand the tangle inside my mind. When I finally spoke out loud for the first time, my heart pounded and my throat felt tight. I feared judgment, awkward silences, and the possibility that my pain might be dismissed. But instead, what I found was a profound sense of relief — as though I had been holding my breath for years and could finally exhale. Unburdening isn’t just about telling your story; it’s about stepping into a space where you can be both fragile and strong, broken and healing.`,
     quote: {
       text: 'The first word feels like leaping off a cliff — terrifying, but it opens the floodgates to freedom.',
@@ -136,10 +140,11 @@ export const BLOGS: Blog[] = [
     title: 'It’s Not Therapy — But It’s Real Connection',
     author: 'Chris Muriuki',
     authorSlug: 'chris-muriuki',
-    image: 'assets/img/blog/blog-big-1.jpg',
+    image: 'assets/img/blog/not-therapy-but-real.jpg',
     sidebarImage: 'assets/img/blog/sidebar/blog-sm-1.jpg',
     date: new Date('2025-07-12'),
     tags: [ 'Connection', 'Safe Space' ],
+    excerpt: 'How casual, compassionate listening can create meaningful connection — even outssluge formal therapy.',
     content: `True human connection doesn’t require an appointment, a diagnosis, or a prescribed treatment plan. Sometimes, the most healing moments come from unplanned conversations, from shared silences, from the recognition that another person simply “gets” us without needing to fix or analyze. This is connection in its purest form — two people meeting each other exactly where they are, without an agenda. In those moments, we aren’t patient and therapist, or speaker and listener — we are simply human beings holding space for each other’s truths.`,
     quote: {
       text: 'Sometimes all we need is not answers, but a compassionate witness to the unfolding of our lives.',
@@ -165,10 +170,11 @@ export const BLOGS: Blog[] = [
     title: 'Offload Stress Before It Builds Up',
     author: 'Joy Wambui',
     authorSlug: 'joy-wambui',
-    image: 'assets/img/blog/blog-big-1.jpg',
+    image: 'assets/img/blog/offload-stress.jpg',
     sidebarImage: 'assets/img/blog/sidebar/blog-sm-1.jpg',
     date: new Date('2025-07-03'),
     tags: [ 'Burnout', 'Daily Pressure' ],
+    excerpt: 'Practical reasons to unburden early — and how small conversations can prevent burnout from piling up.',
     content: `Stress is a lot like steam in a sealed container — if it’s not released gradually, the pressure builds until something eventually bursts. In our fast-paced, constantly connected lives, we often normalize carrying high levels of stress until our bodies force us to stop. Talking about our challenges regularly acts like a safety valve, letting us release that mental pressure in a healthy, controlled way. The act of sharing our load not only lightens it, but also gives us perspective, helping us navigate life’s demands without losing ourselves in the process.`,
     quote: {
       text: 'Your mind craves healthy outlets as much as your body craves rest and nourishment.',
@@ -195,10 +201,11 @@ export const BLOGS: Blog[] = [
     title: 'It’s Okay Not to Be Okay — And Say It Out Loud',
     author: 'Kendi Mugo',
     authorSlug: 'kendi-mugo',
-    image: 'assets/img/blog/blog-big-1.jpg',
+    image: 'assets/img/blog/its-okay-not-be-okay.jpg',
     sidebarImage: 'assets/img/blog/sidebar/blog-sm-1.jpg',
     date: new Date('2025-06-30'),
     tags: [ 'Vulnerability', 'Emotional Honesty' ],
+    excerpt: 'On the power of admitting struggle out loud and how vulnerability often leads to relief, not weakness.',
     content: `We live in a culture that often prizes polished smiles and unshakable confidence. But behind those masks, so many of us carry unspoken struggles. We avoid admitting our pain because we fear being a burden, or worse, being seen as weak. Yet, vulnerability is not weakness — it is one of the most powerful acts of courage. When we speak our truth, we invite others to drop their own masks and meet us in the raw, unfiltered middle. Saying “I’m not okay” out loud is not the end of the story — it’s the beginning of one where connection and healing can take root.`,
     quote: {
       text: 'The bravest words you may ever speak are: “I’m not okay” — because they open the door to becoming okay.',

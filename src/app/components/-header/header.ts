@@ -6,10 +6,7 @@ import { InfoArea } from './-info-area/info-area';
 
 @Component({
   selector: 'app-header',
-  imports: [
-    RouterLink,
-    InfoArea
-  ],
+  imports: [ RouterLink, InfoArea ],
   templateUrl: './header.html',
   standalone: true,
   styleUrl: './header.css'
@@ -28,7 +25,7 @@ export class Header {
     home: '/',
     aboutUs: '/about-us',
     services: '/services',
-    servicesDetails: (slug: string) => `/services/${slug}`,
+    servicesDetails: (slug: string) => `/services/${ slug }`,
     team: '/team',
     teamDetails: '/team-details',
     events: '/events',

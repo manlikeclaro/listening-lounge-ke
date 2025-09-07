@@ -10,7 +10,7 @@ import { Component } from '@angular/core';
 export class Faq {
 
   activeIndex = -1;
-  backgroundImage = 'assets/img/faq/faq-img-2.jpg';
+  backgroundImage = 'assets/img/faq/faq-img-3.jpg';
 
   faqs = [
     {

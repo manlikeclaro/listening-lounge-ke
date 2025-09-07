@@ -36,23 +36,23 @@ export class Testimonials implements AfterViewInit {
 
   testimonials = [
     {
-      name: 'Zimmy Carter',
-      title: 'Creative Director',
-      avatar: '/assets/img/testimonial/person-1.png',
+      name: 'Achieng Otieno',
+      title: 'University Student',
+      avatar: '/assets/img/testimonial/achieng-atieno.png',
       rating: 5,
-      message: 'Sometimes you just need a safe space to speak freely. These sessions gave me room to unload without pressure, and I walked away feeling heard, understood, and significantly lighter each time we talked.'
+      message: 'Sometimes you just need a safe space to speak freely. These sessions gave me room to unload without pressure, and I walked away feeling heard, understood, and lighter each time we talked.'
     },
     {
-      name: 'Peter Martyn',
-      title: 'Project Manager',
-      avatar: '/assets/img/testimonial/person-2.png',
+      name: 'Mwangi Kamau',
+      title: 'Small Business Owner',
+      avatar: '/assets/img/testimonial/mwangi-kamau.png',
       rating: 5,
       message: 'I didn’t realize how much I’d been carrying until I finally talked. The space was open and non-judgmental, and the clarity I gained gave me perspective and a renewed sense of calm I didn’t expect.'
     },
     {
-      name: 'Reoser Fencon',
-      title: 'Sr. Consultant',
-      avatar: '/assets/img/testimonial/person-3.png',
+      name: 'Fatuma Hassan',
+      title: 'Community Volunteer',
+      avatar: '/assets/img/testimonial/fatuma-hassan.png',
       rating: 4,
       message: 'It’s not therapy, but it’s something just as valuable. A thoughtful, no-pressure environment where you’re free to speak your mind and walk away with a clearer head and a more peaceful heart.'
     }

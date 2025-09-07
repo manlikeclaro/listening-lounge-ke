@@ -1,18 +1,21 @@
 import { DatePipe } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import AOS from 'aos';
+import { Blog, BLOGS } from '../../shared/blog-data';
+import 'aos/dist/aos.css'; // import styles
+
 
 @Component({
+  imports: [ RouterLink, DatePipe ],
   selector: 'app-blogs',
-  imports: [
-    RouterLink,
-    DatePipe
-  ],
-  templateUrl: './blogs.html',
   standalone: true,
-  styleUrl: './blogs.css'
+  styleUrl: './blogs.css',
+  templateUrl: './blogs.html'
 })
-export class Blogs {
+export class Blogs implements OnInit {
+
+  @ViewChild('blogContainer') blogContainer!: ElementRef;
 
   blogPage = {
     bannerImage: 'assets/img/slider/slider-bg.jpg',
@@ -23,72 +26,64 @@ export class Blogs {
     heading: 'Latest Blogs'
   };
 
-  allBlogs = [
-    {
-      slug: 'why-talking-helps',
-      title: 'Why Talking Helps: The Science of Feeling Heard',
-      author: 'Leila Kimani',
-      authorSlug: 'leila-kimani',
-      image: 'assets/img/blog/blog-1.jpg',
-      date: new Date('2025-07-05'),
-      tags: [ 'Emotional Support', 'Mental Wellness' ],
-      excerpt: 'We explore the science behind why being heard lightens the emotional load and how connection helps you feel less alone.'
-    },
-    {
-      slug: 'you-dont-need-fix',
-      title: 'You Don’t Need Fixing — Just a Place to Be Real',
-      author: 'Samuel Okoth',
-      authorSlug: 'samuel-okoth',
-      image: 'assets/img/blog/blog-2.jpg',
-      date: new Date('2025-07-08'),
-      tags: [ 'Empathy', 'Self-Acceptance' ],
-      excerpt: 'Advice isn’t always what people want — sometimes a non-judgmental space to be real is enough to start feeling better.'
-    },
-    {
-      slug: 'first-time-unburdening',
-      title: 'My First Time Unburdening — What I Wish I Knew',
-      author: 'Anonymous Story',
-      authorSlug: 'anonymous-story',
-      image: 'assets/img/blog/blog-3.jpg',
-      date: new Date('2025-07-10'),
-      tags: [ 'Real Stories', 'Emotional Release' ],
-      excerpt: 'A personal account of opening up for the first time and the surprising relief that followed.'
-    },
-    {
-      slug: 'not-therapy-but-real',
-      title: 'It’s Not Therapy — But It’s Real Connection',
-      author: 'Chris Muriuki',
-      authorSlug: 'chris-muriuki',
-      image: 'assets/img/blog/blog-1.jpg',
-      date: new Date('2025-07-12'),
-      tags: [ 'Connection', 'Safe Space' ],
-      excerpt: 'How casual, compassionate listening can create meaningful connection — even outssluge formal therapy.'
-    },
-    {
-      slug: 'offload-stress',
-      title: 'Offload Stress Before It Builds Up',
-      author: 'Joy Wambui',
-      authorSlug: 'joy-wambui',
-      image: 'assets/img/blog/blog-2.jpg',
-      date: new Date('2025-07-03'),
-      tags: [ 'Burnout', 'Daily Pressure' ],
-      excerpt: 'Practical reasons to unburden early — and how small conversations can prevent burnout from piling up.'
-    },
-    {
-      slug: 'its-okay-not-be-okay',
-      title: 'It’s Okay Not to Be Okay — And Say It Out Loud',
-      author: 'Kendi Mugo',
-      authorSlug: 'kendi-mugo',
-      image: 'assets/img/blog/blog-3.jpg',
-      date: new Date('2025-06-30'),
-      tags: [ 'Vulnerability', 'Emotional Honesty' ],
-      excerpt: 'On the power of admitting struggle out loud and how vulnerability often leads to relief, not weakness.'
-    }
-  ];
+  allBlogs = BLOGS;
+  visibleBlogs: Blog[] = [];
 
+  blogsPerPage = 6;
   pagination = {
-    current: 2,
-    total: 3,
-    pages: [ 1, 2, 3 ]
+    current: 1,
+    total: 0,
+    pages: [] as number[]
   };
+
+  ngOnInit() {
+    // Sort all blogs by date descending (most recent first)
+    this.allBlogs = [ ...BLOGS ].sort(
+      (a, b) => b.date.getTime() - a.date.getTime()
+    );
+
+    AOS.init({
+      duration: 600,
+      easing: 'ease-in-out',
+      once: false, // animate each time a card enters
+    });
+
+    this.setupPagination();
+    this.updateVisibleBlogs();
+  }
+
+  setupPagination() {
+    this.pagination.total = Math.ceil(this.allBlogs.length / this.blogsPerPage);
+    this.pagination.pages = Array.from({ length: this.pagination.total }, (_, i) => i + 1);
+  }
+
+  updateVisibleBlogs() {
+    const start = (this.pagination.current - 1) * this.blogsPerPage;
+    const end = start + this.blogsPerPage;
+    this.visibleBlogs = this.allBlogs.slice(start, end);
+
+    // trigger staggered animation for new cards only
+    setTimeout(() => AOS.refreshHard(), 50);
+
+    // scroll to top of blog container smoothly
+    if (this.blogContainer) {
+      const top = this.blogContainer.nativeElement.getBoundingClientRect().top + window.scrollY;
+      window.scrollTo({ behavior: 'smooth', top: top - 125 });
+    }
+  }
+
+  goToPage(page: number) {
+    if (page >= 1 && page <= this.pagination.total) {
+      this.pagination.current = page;
+      this.updateVisibleBlogs();
+    }
+  }
+
+  prevPage() {
+    this.goToPage(this.pagination.current - 1);
+  }
+
+  nextPage() {
+    this.goToPage(this.pagination.current + 1);
+  }
 }

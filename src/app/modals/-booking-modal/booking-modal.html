@@ -1,0 +1,62 @@
+<div class="modal-body">
+  <div class="services__appointment grey-bg-3">
+    <div class="sidebar-title mb-30 d-flex justify-content-between align-items-start">
+      <div>
+        <h3 class="mb-0">
+          Book an Appointment
+          <p class="m-1">
+            ({{ plan.title }})
+            @if (plan.price?.length) {
+              &#64; <span>{{ plan.price }}</span> / <span>{{ plan.frequency }}</span>
+            }
+          </p>
+        </h3>
+        <p>{{ plan.description }}</p>
+      </div>
+
+      <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss()"></button>
+    </div>
+
+    <div class="services__appointment-form">
+      <form [formGroup]="bookingForm" novalidate>
+        <input type="text" placeholder="Full Name" formControlName="name"/>
+        @if (bookingForm.get('name')?.invalid && bookingForm.get('name')?.touched) {
+          <div class="text-danger small mb-2">Name is required</div>
+        }
+
+        <input type="email" placeholder="Email" formControlName="email"/>
+        @if (bookingForm.get('email')?.invalid && bookingForm.get('email')?.touched) {
+          @if (bookingForm.get('email')?.errors?.['required']) {
+            <div class="text-danger small mb-2">Email is required</div>
+          } @else {
+            <div class="text-danger small mb-2">Enter a valid email</div>
+          }
+        }
+
+        <input type="date" placeholder="Choose Date" formControlName="date" [min]="today" class="form-control"/>
+        @if (bookingForm.get('date')?.invalid && bookingForm.get('date')?.touched) {
+          <div class="text-danger small mb-2">Date is required</div>
+        }
+
+        <input type="time" placeholder="Choose Time" formControlName="time" [disabled]="!bookingForm.get('date')?.value" class="form-control"/>
+        @if (bookingForm.get('time')?.invalid && bookingForm.get('time')?.touched) {
+          <div class="text-danger small mb-2">Time is required</div>
+        }
+
+        @if (bookingForm.errors?.['pastDateTime'] && (bookingForm.get('date')?.touched || bookingForm.get('time')?.touched)) {
+          <div class="text-danger small mb-2">
+            Date and time must be in the future
+          </div>
+        }
+
+        <!-- Notes -->
+        <textarea cols="30" rows="5" placeholder="Additional Notes" formControlName="notes"></textarea>
+
+        <!-- Submit Button -->
+        <button type="button" class="s-btn s-btn__square s-btn__square-2 mt-3" (click)="submitBooking()" [disabled]="bookingForm.invalid">
+          Confirm Booking
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

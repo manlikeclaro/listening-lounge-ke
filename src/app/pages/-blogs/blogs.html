@@ -29,9 +29,9 @@
 <!-- Blog Area -->
 <section class="blog__area pt-120 pb-75">
   <div class="container">
-    <div class="row">
-      @for (blog of allBlogs; track blog.slug) {
-        <div class="col-xl-4 col-lg-4 mb-4">
+    <div class="row" #blogContainer>
+      @for (blog of visibleBlogs; track blog.slug; let i = $index) {
+        <div class="col-xl-4 col-lg-4 mb-4" data-aos="fade-in" data-aos-duration="600" [attr.data-aos-delay]="i * 200">
           <div class="blog__wrapper">
             <article class="postbox mb-40">
               <div class="postbox__thumb w-img">
@@ -42,23 +42,25 @@
 
               <div class="postbox__content postbox__content-3 grey-bg">
                 <div class="blog__meta blog__meta-2 blog__meta-4 blog__meta-5 mb-15">
+            <span>
+              <a [routerLink]="['/author', blog.authorSlug]">
+                <i class="fas fa-user"></i> {{ blog.author }}
+              </a>
+            </span>
                   <span>
-                    <a [routerLink]="['/author', blog.authorSlug]">
-                      <i class="fas fa-user"></i> {{ blog.author }}
-                    </a>
-                  </span>
-                  <span>
-                    <i class="fas fa-calendar"></i> {{ blog.date | date:'longDate' }}
-                  </span>
+              <i class="fas fa-calendar"></i> {{ blog.date | date:'longDate' }}
+            </span>
                 </div>
 
                 <h3 class="postbox__title mb-20">
                   <a [routerLink]="['/blogs', blog.slug]">{{ blog.title }}</a>
                 </h3>
 
-                <div class="postbox__text mb-10">
-                  <p>{{ blog.excerpt }}</p>
-                </div>
+                @if (blog.excerpt?.length) {
+                  <div class="postbox__text mb-10">
+                    <p>{{ blog.excerpt }}</p>
+                  </div>
+                }
 
                 <div class="read-more">
                   <a [routerLink]="['/blogs', blog.slug]" class="link-btn">read more</a>
@@ -75,13 +77,21 @@
       <div class="col-xl-12">
         <div class="basic-pagination mb-40 text-center">
           <ul>
-            <li><a href="#"><i class="fas fa-angle-double-left"></i></a></li>
+            <li>
+              <a (click)="prevPage()" [class.disabled]="pagination.current === 1">
+                <i class="fas fa-angle-double-left"></i>
+              </a>
+            </li>
             @for (page of pagination.pages; track page) {
               <li [class.active]="page === pagination.current">
-                <a href="#">{{ page }}</a>
+                <a (click)="goToPage(page)">{{ page }}</a>
               </li>
             }
-            <li><a href="#"><i class="fas fa-angle-double-right"></i></a></li>
+            <li>
+              <a (click)="nextPage()" [class.disabled]="pagination.current === pagination.total">
+                <i class="fas fa-angle-double-right"></i>
+              </a>
+            </li>
           </ul>
         </div>
       </div>

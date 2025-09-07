@@ -4,9 +4,7 @@ import { SERVICES } from '../../shared/service-data';
 
 @Component({
   selector: 'app-services',
-  imports: [
-    RouterLink
-  ],
+  imports: [ RouterLink ],
   templateUrl: './services.html',
   standalone: true,
   styleUrl: './services.css'

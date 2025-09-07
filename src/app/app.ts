@@ -4,11 +4,7 @@ import { Footer } from './components/-footer/footer';
 import { Header } from './components/-header/header';
 
 @Component({
-  imports: [
-    RouterOutlet,
-    Header,
-    Footer
-  ],
+  imports: [ RouterOutlet, Header, Footer ],
   selector: 'app-root',
   standalone: true,
   styleUrl: './app.css',

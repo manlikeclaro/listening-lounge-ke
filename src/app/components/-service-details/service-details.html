@@ -1,99 +1,81 @@
-<main>
-  <!-- Banner -->
-  <section class="page__title p-relative pt-200 pb-200"
-           [style.background-image]="'url(' + bannerImage + ')'"
-           [attr.data-background]="bannerImage">
-    <div class="container">
-      <div class="row">
-        <div class="col-xl-12">
-          <div class="page__title-inner text-center">
-            <div class="page__title-breadcrumb">
-              <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                  @for (item of breadcrumbs; track item.route) {
-                    <li class="breadcrumb-item" [class.active]="!item.route">
-                      @if (item.route) {
-                        <a [routerLink]="item.route">{{ item.label }}</a>
-                      } @else {
-                        {{ item.label }}
-                      }
-                    </li>
-                  }
-                </ol>
-              </nav>
+@if (service) {
+  <main>
+    <!-- Banner -->
+    <section class="page__title p-relative pt-200 pb-200" [style.background-image]="'url(' + bannerImage + ')'">
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-12">
+            <div class="page__title-inner text-center">
+              <div class="page__title-breadcrumb">
+                <nav aria-label="breadcrumb">
+                  <ol class="breadcrumb">
+                    @for (item of breadcrumbs; track item.route) {
+                      <li class="breadcrumb-item" [class.active]="!item.route">
+                        @if (item.route) {
+                          <a [routerLink]="item.route">{{ item.label }}</a>
+                        } @else {
+                          {{ item.label }}
+                        }
+                      </li>
+                    }
+                  </ol>
+                </nav>
+              </div>
+              <h1>{{ service.label }}</h1>
             </div>
-            <h1>{{ serviceTitle }}</h1>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Case Details -->
-  <section class="case__area pt-115 pb-80">
-    <div class="container">
-      <div class="row">
-        <!-- Sidebar -->
-        <div class="col-xl-4 col-lg-4 col-md-4">
-          <div class="case__details-sidebar">
-
-            <!-- Info -->
-            <div class="sidebar-wrapper grey-bg-3 mb-30">
-              <div class="sidebar-title"><h3>Other Services</h3></div>
-              <div class="sidebar-list">
-                <ul>
-                  @for (service of allServices; track service.slug) {
-                    <li>
-                      <a [routerLink]="['/services', service.slug]">
-                        {{ service.label }}
-                      </a>
-                    </li>
-                  }
-                </ul>
-              </div>
-            </div>
-
-            <!-- Support Banner -->
-            <div class="services__support case__support p-relative text-center mb-30"
-                 [style.background-image]="'url(' + supportBanner.backgroundImage + ')'"
-                 [attr.data-background]="supportBanner.backgroundImage">
-              <div class="services__support-inner p-relative">
-                <h1>{{ supportBanner.text }}</h1>
-                <a [routerLink]="supportBanner.link" class="s-btn s-btn__square s-btn__square-white">
-                  {{ supportBanner.linkText }}
-                </a>
+    <!-- Case Details -->
+    <section class="case__area pt-115 pb-80">
+      <div class="container">
+        <div class="row">
+          <!-- Sidebar -->
+          <div class="col-xl-4 col-lg-4 col-md-4">
+            <div class="case__details-sidebar">
+              <div class="sidebar-wrapper grey-bg-3 mb-30">
+                <div class="sidebar-title"><h3>Other Services</h3></div>
+                <div class="sidebar-list">
+                  <ul>
+                    @for (item of allServices; track item.slug) {
+                      <li>
+                        <a [routerLink]="['/services', item.slug]">{{ item.label }}</a>
+                      </li>
+                    }
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <!-- Main Content -->
-        <div class="col-xl-8 col-lg-8 col-md-8">
-          <div class="case__head w-img mb-40">
-            <h2>Service Summary</h2>
-            <i>{{ serviceDescription }}</i>
-            <p>{{ serviceContent }}</p>
-            <img [src]="serviceImage" alt="case-details">
-            <p>{{ serviceContent2 }}</p>
-          </div>
+          <!-- Main Content -->
+          <div class="col-xl-8 col-lg-8 col-md-8">
+            <div class="case__head w-img mb-40">
+              <h2>Service Summary</h2>
+              <i>{{ service.description }}</i>
+              <p>{{ service.content[0] }}</p>
+              <img [src]="service.image" [alt]="service.label">
+              <p>{{ service.content[1] }}</p>
+            </div>
 
-          <!-- Video -->
-          <div class="case__details-item video">
-            <h3>Watch how this helps</h3>
-            <div class="case__details-video p-relative"
-                 [style.background-image]="'url(' + serviceVideoBackground + ')'"
-                 [attr.data-background]="serviceVideoBackground">
-              <div class="case__details-video-btn p-absolute">
-                <a [href]="serviceVideoUrl" data-fancybox class="play-btn play-btn-pink">
-                  <i class="fas fa-play"></i>
-                </a>
+            <!-- Video -->
+            <div class="case__details-item video">
+              <h3>Watch how this helps</h3>
+              <div class="case__details-video p-relative" [style.background-image]="'url(' + service.video.background + ')'">
+                <div class="case__details-video-btn p-absolute">
+                  <a [href]="service.video.url" data-fancybox class="play-btn play-btn-pink">
+                    <i class="fas fa-play"></i>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <app-pricing [pricingPlans]="servicePricingPlans"></app-pricing>
-</main>
+    <app-pricing [pricingPlans]="service.pricingPlans"></app-pricing>
+  </main>
+}

@@ -25,8 +25,8 @@
             <div class="pricing__content text-center pink-soft-bg p-relative">
               <div class="pricing__price p-absolute d-flex align-items-center justify-content-center">
                 <div class="pricing__price-inner">
-                  @if (plan.price){
-                    <h1>{{ plan.price }}<span>/</span></h1>
+                  @if (plan.price) {
+                    <span>{{ plan.price }}<span>/</span></span>
                     <span>{{ plan.frequency }}</span>
                   } @else {
                     <span>Custom Quote</span>
@@ -38,7 +38,7 @@
               <p>{{ plan.description }}</p>
 
               <div class="pricing__btn p-absolute">
-                <a [href]="plan.buttonUrl" class="s-btn">{{ plan.buttonLabel }}</a>
+                <a type="button" class="s-btn" (click)="openBookingModal(plan)">{{ plan.buttonLabel }}</a>
               </div>
             </div>
           </div>

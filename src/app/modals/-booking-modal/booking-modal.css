@@ -1,0 +1,58 @@
+.services__appointment {
+  padding: 50px 40px;
+}
+
+.services__appointment-form input, .services__appointment-form textarea {
+  width: 100%;
+  height: 60px;
+  padding: 0 20px;
+  border: 1px solid #dde0e0;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  margin-bottom: 10px;
+}
+
+.services__appointment-form input:focus, .services__appointment-form textarea:focus {
+  border-color: #056c5f;
+}
+
+.services__appointment-form input::placeholder, .services__appointment-form textarea::placeholder {
+  color: #999999;
+}
+
+.services__appointment-form textarea {
+  height: 130px;
+  resize: none;
+  padding: 15px 20px;
+}
+
+.services__appointment-form .nice-select {
+  border: 1px solid #dde0e0;
+  width: 100%;
+  margin-bottom: 10px;
+  height: 60px;
+  line-height: 60px;
+  padding: 0 20px;
+  background-color: #ffffff;
+}
+
+.services__appointment-form .nice-select:focus {
+  border-color: #056c5f;
+}
+
+.services__appointment-form .nice-select::after {
+  right: 20px;
+}
+
+.services__appointment-form .nice-select ul {
+  width: 100%;
+}
+
+.services__appointment-form .nice-select ul li {
+  display: block;
+}
+
+.services__appointment-form button {
+  width: 100%;
+}
